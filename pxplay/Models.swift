@@ -7,14 +7,12 @@
 //
 
 import Foundation
-import OrderedDictionary
 
 typealias EntityId = UUID
 
 class AppData: Codable, Equatable, ObservableObject {
-    var revision = 0
-    var people: OrderedDictionary<EntityId, Person>
-    var spaces: OrderedDictionary<EntityId, Space>
+    var revision: Int
+    var spaces: [Space]
     
     static func ==(left: AppData, right: AppData) -> Bool {
         left.revision == right.revision
@@ -22,15 +20,15 @@ class AppData: Codable, Equatable, ObservableObject {
 }
 
 struct Person: Hashable, Codable, Identifiable {
-    var entityId: UUID
+    var entityId: EntityId
     var name: String
     
     var id: UUID { entityId }
 }
 
 struct Space: Codable, Identifiable {
-    var entityId: UUID
-    var participants: [EntityId]
+    var entityId: EntityId
+    var participants: [Person]
     var unreadCount: Int
     var messages: [Message]
     
@@ -38,8 +36,8 @@ struct Space: Codable, Identifiable {
 }
 
 struct Message: Hashable, Codable, Identifiable {
-    var entityId: UUID
-    var author: EntityId
+    var entityId: EntityId
+    var author: Person
     var body: String
     var sentAt: Date
     

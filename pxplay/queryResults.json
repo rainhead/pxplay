@@ -1,49 +1,53 @@
 {
     "revision": 0,
-    "people": [
-        {
-            "entityId": "b6134024-fe83-11e9-a439-3b4373fd7cea",
-            "name": "Peter"
-        },
-        {
-            "entityId": "c4929816-fe83-11e9-9175-f3bab2f8be35",
-            "name": "Ed"
-        },
-        {
-            "entityId": "cfade00c-fe83-11e9-81b8-97d4de897f86",
-            "name": "Laurel"
-        }
-    ],
     "spaces": [
         {
             "entityId": "ab54b074-fce8-11e9-b02a-63e97b2de09a",
             "participants": [
-                "b6134024-fe83-11e9-a439-3b4373fd7cea",
-                "c4929816-fe83-11e9-9175-f3bab2f8be35"
+                {
+                    "entityId": "b6134024-fe83-11e9-a439-3b4373fd7cea",
+                    "name": "Peter"
+                },
+                {
+                    "entityId": "c4929816-fe83-11e9-9175-f3bab2f8be35",
+                    "name": "Ed"
+                }
             ],
             "unreadCount": 2,
             "messages": [
                 {
                     "entityId": "e090f844-fcf0-11e9-a908-5bf59003c9e4",
-                    "author": "b6134024-fe83-11e9-a439-3b4373fd7cea",
+                    "author": {
+                        "entityId": "b6134024-fe83-11e9-a439-3b4373fd7cea",
+                        "name": "Peter"
+                    },
                     "body": "Well hello there. Let's make this message a bit longer to see how wrapping works.",
                     "sentAt": "2019-11-01T21:26:12-0700"
                 },
                 {
                     "entityId": "e090f844-fcf0-11e9-a908-5bf59003c9e3",
-                    "author": "c4929816-fe83-11e9-9175-f3bab2f8be35",
+                    "author": {
+                        "entityId": "c4929816-fe83-11e9-9175-f3bab2f8be35",
+                        "name": "Ed"
+                    },
                     "body": "Ohai!",
                     "sentAt": "2019-11-01T21:26:23-0700"
                 },
                 {
                     "entityId": "e090f844-fcf0-11e9-a908-5bf59003c9e1",
-                    "author": "b6134024-fe83-11e9-a439-3b4373fd7cea",
+                    "author": {
+                        "entityId": "b6134024-fe83-11e9-a439-3b4373fd7cea",
+                        "name": "Peter"
+                    },
                     "body": "What do we do now? There's a play I've really been meaning to see, but I don't remember the name. Makes it hard to Google. Oh well.",
                     "sentAt": "2019-11-01T21:26:41-0700"
                 },
                 {
                     "entityId": "e090f844-fcf0-11e9-a908-5bf59003c9ff",
-                    "author": "b6134024-fe83-11e9-a439-3b4373fd7cea",
+                    "author": {
+                        "entityId": "b6134024-fe83-11e9-a439-3b4373fd7cea",
+                        "name": "Peter"
+                    },
                     "body": "I guess I'll take a nap.",
                     "sentAt": "2019-11-01T21:26:55-0700"
                 }
@@ -52,26 +56,41 @@
         {
             "entityId": "c8bb49ce-fcee-11e9-8880-2f7c548f8f30",
             "participants": [
-                "b6134024-fe83-11e9-a439-3b4373fd7cea",
-                "cfade00c-fe83-11e9-81b8-97d4de897f86"
+                {
+                    "entityId": "b6134024-fe83-11e9-a439-3b4373fd7cea",
+                    "name": "Peter"
+                },
+                {
+                    "entityId": "cfade00c-fe83-11e9-81b8-97d4de897f86",
+                    "name": "Laurel"
+                }
             ],
             "unreadCount": 1,
             "messages": [
                 {
                     "entityId": "e090f844-fcf0-11e9-a908-5bf59003c9e5",
-                    "author": "b6134024-fe83-11e9-a439-3b4373fd7cea",
+                    "author": {
+                        "entityId": "b6134024-fe83-11e9-a439-3b4373fd7cea",
+                        "name": "Peter"
+                    },
                     "body": "What time should we leave?",
                     "sentAt": "2019-11-01T17:12:01-0700"
                 },
                 {
                     "entityId": "e090f844-fcf0-11e9-a908-5bf59003c9e2",
-                    "author": "cfade00c-fe83-11e9-81b8-97d4de897f86",
+                    "author": {
+                        "entityId": "cfade00c-fe83-11e9-81b8-97d4de897f86",
+                        "name": "Laurel"
+                    },
                     "body": "I don't know, whenever works for you",
                     "sentAt": "2019-11-01T17:12:09-0700"
                 },
                 {
                     "entityId": "e090f844-fcf0-11e9-a908-5bf59003c9e6",
-                    "author": "b6134024-fe83-11e9-a439-3b4373fd7cea",
+                    "author": {
+                        "entityId": "b6134024-fe83-11e9-a439-3b4373fd7cea",
+                        "name": "Peter"
+                    },
                     "body": "Okay, I'm almost ready",
                     "sentAt": "2019-11-01T17:12:41-0700"
                 }

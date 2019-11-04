@@ -21,10 +21,9 @@ private let dateFormatter: DateFormatter = {
 }()
 
 extension Space {
-    func titleForViewer(_ viewer: EntityId, people: [Person]) -> String {
-        participants.filter { $0 != viewer }
-            .map { participant in people.first { $0.entityId == participant } }
-            .map { $0?.name ?? "unknown" }
+    func titleForViewer(_ viewer: EntityId) -> String {
+        participants.filter { $0.entityId != viewer }
+            .map { $0.name }
             .joined(separator: ", ")
     }
 }
@@ -32,7 +31,7 @@ extension Space {
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            SpaceList(spaces: appData.spaces, people: appData.people, viewer: viewer)
+            SpaceList(spaces: appData.spaces, viewer: viewer)
                 .navigationBarTitle(Text("$PX"))
         }.navigationViewStyle(DoubleColumnNavigationViewStyle())
     }
@@ -40,13 +39,12 @@ struct ContentView: View {
 
 struct SpaceList: View {
     var spaces: [Space]
-    var people: [Person]
     var viewer: EntityId
 
     var body: some View {
         List(spaces) { space in
-            NavigationLink(destination: SpaceDetail(space: space, people: self.people, viewer: self.viewer)) {
-                SpaceRow(space: space, people: self.people, viewer: self.viewer)
+            NavigationLink(destination: SpaceDetail(space: space, viewer: self.viewer)) {
+                SpaceRow(space: space, viewer: self.viewer)
             }
         }
     }
@@ -54,7 +52,7 @@ struct SpaceList: View {
 
 struct SpaceList_Previews: PreviewProvider {
     static var previews: some View {
-        SpaceList(spaces: appData.spaces, people: appData.people, viewer: viewer)
+        SpaceList(spaces: appData.spaces, viewer: viewer)
     }
 }
 
@@ -74,12 +72,11 @@ struct Badge: View {
 
 struct SpaceRow: View {
     var space: Space
-    var people: [Person]
     var viewer: EntityId
     
     var body: some View {
         HStack {
-            Text(space.titleForViewer(self.viewer, people: people))
+            Text(space.titleForViewer(self.viewer))
             Spacer()
             Badge(count: space.unreadCount)
         }
@@ -88,11 +85,10 @@ struct SpaceRow: View {
 
 struct SpaceDetail: View {
     var space: Space
-    var people: [Person]
     var viewer: EntityId
 
     lazy var title: String = {
-        space.titleForViewer(viewer, people: people)
+        space.titleForViewer(viewer)
     }()
     
     var body: some View {
@@ -110,24 +106,16 @@ struct SpaceDetail: View {
         }
         runs.append(run)
         return List(runs, id: \.first) { messages in
-            MessagesRow(messages: messages, people: self.people, viewer: self.viewer)
-        }.navigationBarTitle(Text(space.titleForViewer(viewer, people: people)))
+            MessagesRow(messages: messages, viewer: self.viewer)
+        }.navigationBarTitle(Text(space.titleForViewer(viewer)))
     }
 }
 
 struct MessagesRow: View {
     var messages: [Message]
-    var people: [Person]
     var viewer: EntityId
     
-    var author: EntityId { messages.first!.author }
-    var authorName: String {
-        if author == viewer {
-            return "You"
-        }
-        let person = people.first { $0.entityId == author }!
-        return person.name
-    }
+    var authorName: String { messages.first!.author.name }
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -145,6 +133,6 @@ struct MessagesRow: View {
 
 struct SpaceDetail_Previews: PreviewProvider {
     static var previews: some View {
-        SpaceDetail(space: appData.spaces.first!, people: appData.people, viewer: viewer)
+        SpaceDetail(space: appData.spaces.first!, viewer: viewer)
     }
 }
