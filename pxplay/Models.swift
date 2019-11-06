@@ -32,7 +32,7 @@ struct Space: Codable, Identifiable {
     var unreadCount: Int
     var messages: [Message]
     
-    var id: UUID { get { entityId } }
+    var id: UUID { entityId }
 }
 
 struct Message: Hashable, Codable, Identifiable {

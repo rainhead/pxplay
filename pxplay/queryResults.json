@@ -13,7 +13,7 @@
                     "name": "Ed"
                 }
             ],
-            "unreadCount": 2,
+            "hasNewContent": true,
             "messages": [
                 {
                     "entityId": "e090f844-fcf0-11e9-a908-5bf59003c9e4",
@@ -65,7 +65,7 @@
                     "name": "Laurel"
                 }
             ],
-            "unreadCount": 1,
+            "hasNewContent": false,
             "messages": [
                 {
                     "entityId": "e090f844-fcf0-11e9-a908-5bf59003c9e5",
